@@ -31,9 +31,77 @@ composer global require drush/drush:8.*
 drush status
 drush version
 ```
-### drupal with drupal
+### Drupal with Drush
 
 Install drupal 
 ```
   drush dl drupal-8 --select
+```
+Or
+```
+  drush dl --drupal-project-rename="project_name"
+```
+```
+  cd project_name
+```
+
+```
+  drush site-install --db-url=mysql://root:password@localhost/drush --site-name="Site Name" --site-mail="your_email" --account-name="your_login" --account-mail="your_email" --account-pass="your_password"
+```
+
+Clear Cache Drush
+```
+drush cache-rebuild
+```
+OR
+```
+drush cr
+```
+
+Let's install Views (I'm sure you know about this module). To do this, you first have to run the following command: 
+```
+  drush dl module_name
+```
+Exemple :
+```
+drush dl admin_toolbar coffee module_filter pathauto token ctools
+```
+Either one of these commands will download Module and place it in the appropriate modules folder. 
+The second command is a short version of the first one. You'll notice that many commands have short versions for an even 
+faster experience. For instance, the long version of the drush status command is drush core-status,
+so don't be surprised if you see others using that one.
+
+Now that Views is installed, enable it with the following command (the long version of which being pm-enable):
+```
+  drush en module_name -y
+```
+Exemple :
+```
+drush en admin_toolbar coffee module_filter pathauto token ctools -y
+```
+
+if you are looking to uninstall Views, you can use the following command:
+```
+ drush pm-uninstall module_name
+```
+
+Update core drupal
+```
+drush up drupal
+```
+
+Update Module
+```
+drush up module_name
+```
+
+Update Password Site
+```
+drush upwd admin --password=your_password
+```
+
+Update Default Theme 
+ ```
+drush config-set system.theme default bartik
+drush config-set system.theme default classy
 ```
