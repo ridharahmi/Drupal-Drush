@@ -105,3 +105,8 @@ Update Default Theme
 drush config-set system.theme default bartik
 drush config-set system.theme default classy
 ```
+
+Backup DataBase
+ ```
+drush sql-dump | gzip > namefile__20_01_2020.sql.gz
+```
